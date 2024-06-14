@@ -5,6 +5,7 @@ import { router } from "../router/Routes";
 const sleep = () => new Promise(resolve => setTimeout(resolve,500)); //just to show  I can do it 
 
 axios.defaults.baseURL = 'http://localhost:5027/api/';
+axios.defaults.withCredentials = true; //allow and set cookie for in app storage
 
 const respBody = (resp: AxiosResponse) => resp.data;
 
@@ -67,9 +68,18 @@ const Errors = {
   getValidationError: () => requests.get('Error/validation-error'),
 }
 
+const Basket = {
+  get: () => requests.get('basket'),
+  addItem: (productId: number, quantity = 1) => 
+    requests.post(`basket?productId=${productId}&quantity=${quantity}`, {}),
+  removeItem: (productId: number, quantity = 1) => 
+    requests.delete(`basket?productId=${productId}&quantity=${quantity}`)
+}
+
 const agent = {
   Catalog,
-  Errors
+  Errors,
+  Basket
 };
 
 export default agent;
