@@ -38,7 +38,7 @@ function App() {
 
   const handleThemeToggle = () => setDarkMode(!darkMode);
 
-  if (loading) return <Loading message='initizliaing app...' />
+  if (loading) return <Loading message='Initializing app...' />
 
   return (
     <ThemeProvider theme={theme}>
