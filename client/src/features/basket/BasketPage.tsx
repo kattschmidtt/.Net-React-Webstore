@@ -1,5 +1,6 @@
-import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { Add, Delete, Remove } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 import { useStoreContext } from '../../app/context/StoreContext';
 import agent from '../../app/api/agent';
 import { useState } from 'react';
@@ -91,6 +92,14 @@ const BasketPage = () => {
         <Grid item xs={6} />
         <Grid item xs={6}>
           <BasketSummary />
+          <Button
+            fullWidth 
+            component={Link} 
+            to={'/checkout'}
+            size='large'
+            variant='contained'>
+              Checkout
+          </Button>
         </Grid>
       </Grid>
     </>
